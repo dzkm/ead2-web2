@@ -29,7 +29,7 @@ const Client = MySQLConnection.define("Client", {
     }
 });
 
-(async() => {
+(async () => {
     try {
         await Client.sync();
         console.log("Tabela do cliente criada com sucesso");
