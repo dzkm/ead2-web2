@@ -1,9 +1,9 @@
 {
     "mysql": {
-        "username": "user_mysql",
-        "password": "pass_mysql",
-        "hostname": "localhost",
+        "username": "ramaobao",
+        "password": "ramao_melhor_professor_2023",
+        "hostname": "127.0.0.1",
         "port": 3306,
-        "database": "database"
+        "database": "ramao_bao"
     }
 }
