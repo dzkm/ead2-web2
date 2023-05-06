@@ -3,7 +3,7 @@ const MySQLConnection = require("../database/MySQLConnection");
 
 const Client = MySQLConnection.define("Client", {
     id: {
-        type: DataType.INTERGER,
+        type: DataType.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
@@ -36,6 +36,6 @@ const Client = MySQLConnection.define("Client", {
     } catch (error) {
         console.error("Houve um erro durante a criação da tabela de cliente: ", error);
     }
-})
+})();
 
 module.exports = Client;

@@ -7,4 +7,4 @@ Server.use(express.json());
 Server.use(express.urlencoded({extended: true}));
 Server.use(ClientRoute);
 
-app.listen(ServerPort, () => console.log(`Servidor está rodando em: http://localhost:${port}`));
+Server.listen(ServerPort, () => console.log(`Servidor está rodando em: http://localhost:${ServerPort}`));
