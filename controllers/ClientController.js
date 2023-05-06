@@ -1,4 +1,5 @@
 const Client = require("../models/Client");
+const Op = require("sequelize");
 const ClientController = {};
 
 
@@ -13,7 +14,7 @@ ClientController.listarTodos = async (req, res) => {
 
 ClientController.buscarPorId = async (req, res) => {
     try{
-        const SingleClient = await Client.findbyPk(req.params.id);
+        const SingleClient = await Client.findByPk(req.params.id);
         res.status(200).json(SingleClient); 
     }catch(error){
         res.status(422).json("Nenhum cliente encontrado. " + error);
@@ -22,11 +23,9 @@ ClientController.buscarPorId = async (req, res) => {
 
 ClientController.buscarPorCidade = async (req, res) => {
     try{
-        const {SingleClient, CountClient} = await Client.findAndCountAll({
+        const {SingleClient, CountClient} = await Client.findAll({
             where: {
-                cidade: {
-                    [Op.like]: `%${req.params.cidade}%`
-                }
+                cidade:  req.params.cidade
             }
         });
         res.status(200).json(`Encontrado ${CountClient} cliente(s) nessa cidade:` + SingleClient);
@@ -67,8 +66,7 @@ ClientController.atualizar = async (req, res) => {
 
 ClientController.excluir = async (req, res) => {
     try{
-        const SingleClient = Client.findByPk(req.params.id);
-        SingleClient.destroy();
+        await Client.destroy({where: {id: req.params.id}})
         res.status(200).json("Cliente deletado com sucesso");
     }catch(error){
         res.status(422).json("Erro ao deletar cliente. " + error);

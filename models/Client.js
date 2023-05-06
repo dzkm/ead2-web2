@@ -20,11 +20,11 @@ const Client = MySQLConnection.define("Client", {
         allowNull: false
     },
     estado: {
-        type: DataType.STRING,
+        type: DataType.CHAR(2),
         allowNull: false
     },
     cep: {
-        type: DataType.CHAR(2),
+        type: DataType.STRING,
         allowNull: false
     }
 });
