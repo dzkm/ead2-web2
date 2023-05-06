@@ -1,5 +1,10 @@
 const express = require('express');
-const app = express();
-const port = 3000;
-app.get('/', (req, res) => res.send('Hello World!'));
-app.listen(port, () => console.log(`Servidor está rodando em: http://localhost:${port}`));
+const ClientRoute = require("./routes/ClientRoute");
+const Server = new express();
+const ServerPort = 3000;
+
+Server.use(express.json());
+Server.use(express.urlencoded({extended: true}));
+Server.use(ClientRoute);
+
+app.listen(ServerPort, () => console.log(`Servidor está rodando em: http://localhost:${port}`));
