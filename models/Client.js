@@ -24,7 +24,7 @@ const Client = MySQLConnection.define("Client", {
         allowNull: false
     },
     cep: {
-        type: DataType.STRING,
+        type: DataType.CHAR(2),
         allowNull: false
     }
 });
